@@ -6,33 +6,81 @@
 <title>HyTerion SMP</title>
 
 <style>
-body { margin:0; font-family: Arial; background:#0b0f2a; color:white; }
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0b0f2a;
+  color:white;
+}
+
+/* NAV */
 header { text-align:center; padding:20px; }
 nav a { margin:0 15px; color:#00ccff; text-decoration:none; }
 
+/* SECTIONS */
 .section { padding:40px; text-align:center; }
 
+/* RANK CARDS */
 .card {
   background:#11163a;
   padding:20px;
   margin:10px;
   border-radius:15px;
   display:inline-block;
-  width:200px;
+  width:220px;
   transition:0.3s;
   box-shadow:0 0 10px #000;
+  position:relative;
+  overflow:hidden;
 }
+
 .card:hover {
   transform:translateY(-10px) scale(1.05);
-  box-shadow:0 0 20px #00ccff;
 }
 
-.rank-tag {
+/* ANIMATED ICON */
+.icon {
+  font-size:30px;
   display:block;
-  margin-top:10px;
-  font-weight:bold;
+  animation: float 2s infinite ease-in-out;
 }
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+/* GRADIENT TEXT */
+.gradient {
+  font-weight:bold;
+  background: linear-gradient(90deg, #00ffff, #00ccff, #ffffff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s infinite linear;
+}
+
+@keyframes gradientMove {
+  0% { background-position:0%; }
+  100% { background-position:200%; }
+}
+
+/* RANK COLORS */
+.crystal { color:#00ffff; }
+.storm { color:#3399ff; }
+.inferno { color:#ff6600; }
+.bloodline { color:#ff0033; }
+.mythic { color:#ffd700; }
+
+/* HOVER GLOWS */
+.card:nth-child(1):hover { box-shadow: 0 0 20px #00ffff; }
+.card:nth-child(2):hover { box-shadow: 0 0 20px #3399ff; }
+.card:nth-child(3):hover { box-shadow: 0 0 20px #ff6600; }
+.card:nth-child(4):hover { box-shadow: 0 0 20px #ff0033; }
+.card:nth-child(5):hover { box-shadow: 0 0 25px #ffd700; }
+
+/* INPUTS */
 button {
   padding:10px;
   background:#00ccff;
@@ -46,8 +94,6 @@ input, select {
   margin:5px;
   width:220px;
 }
-
-.copy-btn { margin-top:10px; }
 </style>
 </head>
 
@@ -55,7 +101,7 @@ input, select {
 
 <header>
 <img src="logo.png" width="200">
-<h1>HyTerion SMP</h1>
+<h1 class="gradient">HyTerion SMP</h1>
 <nav>
 <a href="#home">Home</a>
 <a href="#ranks">Ranks</a>
@@ -71,17 +117,43 @@ input, select {
 
 <div class="section" id="ranks">
 <h2>Ranks</h2>
-<div class="card">VIP<br>₱50<span class="rank-tag">[VIP]</span></div>
-<div class="card">MVP<br>₱100<span class="rank-tag">[MVP]</span></div>
-<div class="card">PRO<br>₱150<span class="rank-tag">[PRO]</span></div>
-<div class="card">ELITE<br>₱200<span class="rank-tag">[ELITE]</span></div>
-<div class="card">LEGEND<br>₱400<span class="rank-tag">[LEGEND]</span></div>
+
+<div class="card">
+<span class="icon">💠</span>
+<span class="gradient crystal">Crystal</span><br>₱50
+<span>[CRYSTAL]</span>
+</div>
+
+<div class="card">
+<span class="icon">🌩️</span>
+<span class="gradient storm">Storm</span><br>₱100
+<span>[STORM]</span>
+</div>
+
+<div class="card">
+<span class="icon">🔥</span>
+<span class="gradient inferno">Inferno</span><br>₱150
+<span>[INFERNO]</span>
+</div>
+
+<div class="card">
+<span class="icon">🩸</span>
+<span class="gradient bloodline">Bloodline</span><br>₱200
+<span>[BLOODLINE]</span>
+</div>
+
+<div class="card">
+<span class="icon">👑</span>
+<span class="gradient mythic">Mythic</span><br>₱400
+<span>[MYTHIC]</span>
+</div>
+
 </div>
 
 <div class="section" id="info">
 <h2>Server Info</h2>
 <p id="serverIP">play.hyterion.net</p>
-<button class="copy-btn" onclick="copyIP()">Copy IP</button>
+<button onclick="copyIP()">Copy IP</button>
 <p>
 <a href="https://discord.gg/yourlink" target="_blank" style="color:#00ccff;">
 Join our Discord
@@ -95,11 +167,11 @@ Join our Discord
 <input type="text" id="username" placeholder="Minecraft Username"><br>
 
 <select id="rank">
-<option>VIP</option>
-<option>MVP</option>
-<option>PRO</option>
-<option>ELITE</option>
-<option>LEGEND</option>
+<option>Crystal</option>
+<option>Storm</option>
+<option>Inferno</option>
+<option>Bloodline</option>
+<option>Mythic</option>
 </select><br>
 
 <h3>Upload GCash Payment Proof</h3>
@@ -117,7 +189,7 @@ function generateCode(){
   let file = document.getElementById('proof').files[0];
 
   if(!user || !file){
-    alert("Please enter username and upload payment proof.");
+    alert("Please enter username and upload proof.");
     return;
   }
 
@@ -125,15 +197,14 @@ function generateCode(){
 
   document.getElementById('code').innerText =
     "Transaction Code: " + code +
-    "\nUser: " + user +
-    "\nRank: " + rank;
+    "\\nUser: " + user +
+    "\\nRank: " + rank;
 
-  // Discord webhook
   fetch("YOUR_DISCORD_WEBHOOK", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      content: `New Purchase!\nUser: ${user}\nRank: ${rank}\nCode: ${code}`
+      content: `New Purchase!\\nUser: ${user}\\nRank: ${rank}\\nCode: ${code}`
     })
   });
 }
@@ -143,15 +214,11 @@ function copyIP(){
   alert("IP Copied!");
 }
 
-// Player count
 fetch('https://api.mcsrvstat.us/2/play.hyterion.net')
 .then(res => res.json())
 .then(data => {
-  if(data.online){
-    document.getElementById('playercount').innerText = data.players.online;
-  } else {
-    document.getElementById('playercount').innerText = "Offline";
-  }
+  document.getElementById('playercount').innerText =
+    data.online ? data.players.online : "Offline";
 });
 </script>
 
