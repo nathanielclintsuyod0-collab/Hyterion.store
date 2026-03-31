@@ -6,21 +6,11 @@
 <title>HyTerion SMP</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#0b0f2a;
-  color:white;
-}
-
-/* NAV */
+body { margin:0; font-family: Arial; background:#0b0f2a; color:white; }
 header { text-align:center; padding:20px; }
 nav a { margin:0 15px; color:#00ccff; text-decoration:none; }
-
-/* SECTIONS */
 .section { padding:40px; text-align:center; }
 
-/* RANK CARDS */
 .card {
   background:#11163a;
   padding:20px;
@@ -29,71 +19,28 @@ nav a { margin:0 15px; color:#00ccff; text-decoration:none; }
   display:inline-block;
   width:220px;
   transition:0.3s;
-  box-shadow:0 0 10px #000;
-  position:relative;
-  overflow:hidden;
 }
+.card:hover { transform:translateY(-10px) scale(1.05); }
 
-.card:hover {
-  transform:translateY(-10px) scale(1.05);
-}
-
-/* ANIMATED ICON */
-.icon {
-  font-size:30px;
-  display:block;
-  animation: float 2s infinite ease-in-out;
-}
-
+.icon { font-size:30px; display:block; animation: float 2s infinite; }
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0px); }
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+  100%{transform:translateY(0)}
 }
 
-/* GRADIENT TEXT */
 .gradient {
   font-weight:bold;
-  background: linear-gradient(90deg, #00ffff, #00ccff, #ffffff);
-  background-size: 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientMove 3s infinite linear;
+  background: linear-gradient(90deg,#00ffff,#00ccff,#ffffff);
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:move 3s infinite linear;
 }
+@keyframes move { 0%{background-position:0%} 100%{background-position:200%} }
 
-@keyframes gradientMove {
-  0% { background-position:0%; }
-  100% { background-position:200%; }
-}
-
-/* RANK COLORS */
-.crystal { color:#00ffff; }
-.storm { color:#3399ff; }
-.inferno { color:#ff6600; }
-.bloodline { color:#ff0033; }
-.mythic { color:#ffd700; }
-
-/* HOVER GLOWS */
-.card:nth-child(1):hover { box-shadow: 0 0 20px #00ffff; }
-.card:nth-child(2):hover { box-shadow: 0 0 20px #3399ff; }
-.card:nth-child(3):hover { box-shadow: 0 0 20px #ff6600; }
-.card:nth-child(4):hover { box-shadow: 0 0 20px #ff0033; }
-.card:nth-child(5):hover { box-shadow: 0 0 25px #ffd700; }
-
-/* INPUTS */
-button {
-  padding:10px;
-  background:#00ccff;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-}
-
-input, select {
-  padding:10px;
-  margin:5px;
-  width:220px;
-}
+button { padding:10px; background:#00ccff; border:none; border-radius:5px; cursor:pointer; }
+input, select { padding:10px; margin:5px; width:220px; }
 </style>
 </head>
 
@@ -111,42 +58,18 @@ input, select {
 </header>
 
 <div class="section" id="home">
-<h2>Welcome to HyTerion SMP</h2>
+<h2>Welcome</h2>
 <p>Player Count: <span id="playercount">Loading...</span></p>
 </div>
 
 <div class="section" id="ranks">
 <h2>Ranks</h2>
 
-<div class="card">
-<span class="icon">💠</span>
-<span class="gradient crystal">Crystal</span><br>₱50
-<span>[CRYSTAL]</span>
-</div>
-
-<div class="card">
-<span class="icon">🌩️</span>
-<span class="gradient storm">Storm</span><br>₱100
-<span>[STORM]</span>
-</div>
-
-<div class="card">
-<span class="icon">🔥</span>
-<span class="gradient inferno">Inferno</span><br>₱150
-<span>[INFERNO]</span>
-</div>
-
-<div class="card">
-<span class="icon">🩸</span>
-<span class="gradient bloodline">Bloodline</span><br>₱200
-<span>[BLOODLINE]</span>
-</div>
-
-<div class="card">
-<span class="icon">👑</span>
-<span class="gradient mythic">Mythic</span><br>₱400
-<span>[MYTHIC]</span>
-</div>
+<div class="card"><span class="icon">💠</span><span class="gradient">Crystal</span><br>₱50</div>
+<div class="card"><span class="icon">🌩️</span><span class="gradient">Storm</span><br>₱100</div>
+<div class="card"><span class="icon">🔥</span><span class="gradient">Inferno</span><br>₱150</div>
+<div class="card"><span class="icon">🩸</span><span class="gradient">Bloodline</span><br>₱200</div>
+<div class="card"><span class="icon">👑</span><span class="gradient">Mythic</span><br>₱400</div>
 
 </div>
 
@@ -154,11 +77,7 @@ input, select {
 <h2>Server Info</h2>
 <p id="serverIP">play.hyterion.net</p>
 <button onclick="copyIP()">Copy IP</button>
-<p>
-<a href="https://discord.gg/yourlink" target="_blank" style="color:#00ccff;">
-Join our Discord
-</a>
-</p>
+<p><a href="https://discord.gg/yourlink" target="_blank">Join Discord</a></p>
 </div>
 
 <div class="section" id="store">
@@ -174,46 +93,84 @@ Join our Discord
 <option>Mythic</option>
 </select><br>
 
-<h3>Upload GCash Payment Proof</h3>
+<h3>Upload GCash Proof</h3>
 <input type="file" id="proof"><br>
 
-<button onclick="generateCode()">Generate Transaction Code</button>
-
+<button onclick="generateCode()">Submit Purchase</button>
 <p id="code"></p>
 </div>
 
+<!-- 🔥 FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 <script>
-function generateCode(){
+// 🔧 PASTE YOUR FIREBASE CONFIG HERE
+const firebaseConfig = {
+    apiKey: "AIzaSyAmvp_rslpGCAqRWYjUPEf4u0e_ZpOsh1I",
+    authDomain: "hyterionstore.firebaseapp.com",
+    projectId: "hyterionstore",
+    storageBucket: "hyterionstore.firebasestorage.app",
+    messagingSenderId: "414597523246",
+    appId: "1:414597523246:web:1a3d8a5345e061a48e7cbf"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const storage = firebase.storage();
+const db = firebase.firestore();
+
+async function generateCode(){
   let user = document.getElementById('username').value;
   let rank = document.getElementById('rank').value;
   let file = document.getElementById('proof').files[0];
 
   if(!user || !file){
-    alert("Please enter username and upload proof.");
+    alert("Fill everything!");
     return;
   }
 
   let code = 'HT-' + Math.random().toString(36).substr(2,9).toUpperCase();
 
-  document.getElementById('code').innerText =
-    "Transaction Code: " + code +
-    "\\nUser: " + user +
-    "\\nRank: " + rank;
+  // Upload proof
+  let ref = storage.ref("proofs/" + code + ".png");
+  await ref.put(file);
+  let url = await ref.getDownloadURL();
 
+  // Save data
+  await db.collection("orders").doc(code).set({
+    username: user,
+    rank: rank,
+    proof: url,
+    status: "pending",
+    date: new Date()
+  });
+
+  // Discord webhook
   fetch("YOUR_DISCORD_WEBHOOK", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      content: `New Purchase!\\nUser: ${user}\\nRank: ${rank}\\nCode: ${code}`
+      content:
+`🛒 NEW PURCHASE
+👤 ${user}
+💎 ${rank}
+🧾 ${code}
+📸 ${url}`
     })
   });
+
+  document.getElementById('code').innerText =
+    "Transaction Code: " + code + " (Pending)";
 }
 
 function copyIP(){
   navigator.clipboard.writeText(document.getElementById('serverIP').innerText);
-  alert("IP Copied!");
+  alert("Copied!");
 }
 
+// Player count
 fetch('https://api.mcsrvstat.us/2/play.hyterion.net')
 .then(res => res.json())
 .then(data => {
