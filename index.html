@@ -128,7 +128,7 @@ input, select {
 <h2>Server Info</h2>
 <p id="serverIP">vanillamyst.ph2-mczie.fun:6009</p>
 <button onclick="copyIP()">Copy IP</button>
-<p><a href="https://discord.gg/gjpXJfQCbc" target="_blank">Join Discord</a></p>
+<p><a href="https://discord.gg/fwNtsfB98j" target="_blank">Join Discord</a></p>
 </div>
 
 <div class="section" id="store">
@@ -213,7 +213,7 @@ async function generateCode(){
 
   // ✅ Redirect to Discord after 2 seconds
   setTimeout(() => {
-    window.location.href = "https://discord.gg/gjpXJfQCbc";
+    window.location.href = "https://discord.gg/fwNtsfB98j";
   }, 2000);
 }
 
@@ -222,7 +222,7 @@ function copyIP(){
   alert("Copied!");
 }
 
-fetch('https://api.mcsrvstat.us/2/play.vanillamyst.net')
+fetch('https://api.mcsrvstat.us/2/vanillamyst.ph2-mczie.fun:6009')
 .then(res => res.json())
 .then(data => {
   document.getElementById('playercount').innerText =
