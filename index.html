@@ -18,6 +18,7 @@ body {
   position: relative;
 }
 
+/* Background */
 body::before {
   content: '';
   position: fixed;
@@ -29,71 +30,20 @@ body::before {
   z-index: -1;
   animation: bgShift 25s ease-in-out infinite;
 }
+@keyframes bgShift { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08) rotate(180deg); } }
 
-@keyframes bgShift {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.08) rotate(180deg); }
-}
-
-/* Header */
-header {
-  background: rgba(26, 26, 46, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(179, 136, 255, 0.3);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.8rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff, #b388ff, #ff6b9d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+/* Header & Hero (same as before) */
+header { background: rgba(26, 26, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(179, 136, 255, 0.3); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+.header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+.logo { display: flex; align-items: center; gap: 1rem; font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #00d4ff, #b388ff, #ff6b9d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .logo-icon { font-size: 2.5rem; animation: pulse 2s infinite; }
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 
 nav { display: flex; gap: 2rem; }
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-nav a:hover {
-  color: #b388ff;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(179, 136, 255, 0.4);
-}
+nav a { color: #fff; text-decoration: none; font-weight: 500; padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; }
+nav a:hover { color: #b388ff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(179,136,255,0.4); }
 
-/* Hero */
-.hero {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 2rem;
-}
-
+.hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 2rem; }
 .hero-content h1 {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 800;
@@ -102,17 +52,23 @@ nav a:hover {
   -webkit-text-fill-color: transparent;
   animation: heroGlow 3s ease-in-out infinite alternate;
 }
-@keyframes heroGlow {
-  from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)); }
-  to   { filter: drop-shadow(0 0 35px rgba(179, 136, 255, 0.8)); }
+@keyframes heroGlow { from { filter: drop-shadow(0 0 20px rgba(0,212,255,0.5)); } to { filter: drop-shadow(0 0 35px rgba(179,136,255,0.8)); } }
+
+/* Ranks Section - With Feature Lists */
+.section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.section h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #00d4ff, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Ranks - PERFECTLY ALIGNED IMAGES */
 .ranks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .rank-card {
@@ -130,7 +86,7 @@ nav a:hover {
 .rank-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-  border-color: rgba(179, 136, 255, 0.5);
+  border-color: rgba(179, 136, 255, 0.6);
 }
 
 .rank-card::before {
@@ -144,52 +100,85 @@ nav a:hover {
 }
 .rank-card:hover::before { opacity: 1; }
 
-/* ALIGNED IMAGE STYLES */
+/* Image Alignment */
 .rank-icon {
   width: 130px;
   height: 130px;
   object-fit: contain;
   display: block;
-  margin: 0 auto 1.5rem auto;
+  margin: 0 auto 1.5rem;
   filter: drop-shadow(0 0 25px rgba(179, 136, 255, 0.7));
   transition: transform 0.4s ease;
 }
-
-.rank-card:hover .rank-icon {
-  transform: scale(1.1) rotate(8deg);
-}
+.rank-card:hover .rank-icon { transform: scale(1.1) rotate(8deg); }
 
 .rank-name {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #ffffff, #b388ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .rank-price {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: #00ff88;
+  margin-bottom: 1.5rem;
 }
 
-/* Rest of your original styles */
-.section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
-.section h2 {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  background: linear-gradient(135deg, #00d4ff, #b388ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Feature List */
+.features {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
 }
 
-.stats-grid, .server-info, .store-form, .btn, .form-group { /* your original styles stay the same */ }
-.stat-card { /* your original styles */ }
-.server-ip { /* your original styles */ }
+.features ul {
+  list-style: none;
+  padding: 0;
+}
 
-/* Media Query */
+.features li {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #e0d4ff;
+  transition: all 0.3s;
+}
+
+.features li:hover {
+  color: #b388ff;
+  transform: translateX(5px);
+}
+
+.features li::before {
+  content: '✔';
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Other sections */
+.stats-grid, .server-info, .store-form, .btn, .form-group { /* Keep your original styles */ }
+.stat-card { background: rgba(26,26,46,0.8); backdrop-filter: blur(20px); border: 1px solid rgba(179,136,255,0.3); padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.4s; }
+.stat-number { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, #00d4ff, #b388ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.btn {
+  background: linear-gradient(135deg, #7c4dff, #b388ff);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(124,77,255,0.4);
+}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(124,77,255,0.6); }
+
 @media (max-width: 768px) {
   .ranks-grid { grid-template-columns: 1fr; }
   .header-container { flex-direction: column; gap: 1rem; }
@@ -219,14 +208,11 @@ nav a:hover {
   <div class="hero-content">
     <h1>VanillaMyst SMP</h1>
     <p>Experience premium vanilla gameplay with exclusive ranks and features</p>
-    <div>
-      <span id="playercount" style="background: rgba(0,0,0,0.5); padding: 1rem 2rem; border-radius: 50px; font-size: 1.2rem; font-weight: 600;">Loading...</span>
-    </div>
+    <div><span id="playercount" style="background: rgba(0,0,0,0.5); padding: 1rem 2rem; border-radius: 50px; font-size: 1.2rem; font-weight: 600;">Loading...</span></div>
   </div>
 </section>
 
 <section class="stats-grid">
-  <!-- your stats cards (unchanged) -->
   <div class="stat-card"><div class="stat-number" id="onlineCount">0</div><div>Players Online</div></div>
   <div class="stat-card"><div class="stat-number">24/7</div><div>Uptime</div></div>
   <div class="stat-card"><div class="stat-number">1.20+</div><div>Version</div></div>
@@ -236,46 +222,100 @@ nav a:hover {
 <section class="section" id="ranks">
   <h2>Premium Ranks</h2>
   <div class="ranks-grid">
+
+    <!-- Crystal -->
     <div class="rank-card">
-      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001678409871/IMG_20260406_163529_616.png" class="rank-icon" alt="Crystal Rank">
+      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001678409871/IMG_20260406_163529_616.png" class="rank-icon" alt="Crystal">
       <div class="rank-name">Crystal</div>
       <div class="rank-price">₱75</div>
+      <div class="features">
+        <ul>
+          <li>Custom Prefix</li>
+          <li>3 Homes (/sethome)</li>
+          <li>/nick command</li>
+          <li>Basic Starter Kit</li>
+          <li>Player Head Command</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- Storm -->
     <div class="rank-card">
-      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001963487302/IMG_20260406_163932_687.png" class="rank-icon" alt="Storm Rank">
+      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001963487302/IMG_20260406_163932_687.png" class="rank-icon" alt="Storm">
       <div class="rank-name">Storm</div>
       <div class="rank-price">₱125</div>
+      <div class="features">
+        <ul>
+          <li>All Crystal Features</li>
+          <li>Colored Name & Chat</li>
+          <li>5 Homes</li>
+          <li>Fly in Survival (/fly)</li>
+          <li>Intermediate Kit</li>
+          <li>Back Command on Death</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- Inferno -->
     <div class="rank-card">
-      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633002269806653/IMG_20260406_164056_104.png" class="rank-icon" alt="Inferno Rank">
+      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633002269806653/IMG_20260406_164056_104.png" class="rank-icon" alt="Inferno">
       <div class="rank-name">Inferno</div>
       <div class="rank-price">₱175</div>
+      <div class="features">
+        <ul>
+          <li>All Storm Features</li>
+          <li>Glowing Name Effect</li>
+          <li>Unlimited Homes</li>
+          <li>Advanced Kit</li>
+          <li>Repair Command (/repair)</li>
+          <li>Access to Special Warps</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- Bloodline -->
     <div class="rank-card">
-      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001384673310/IMG_20260406_164150_004.png" class="rank-icon" alt="Bloodline Rank">
+      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001384673310/IMG_20260406_164150_004.png" class="rank-icon" alt="Bloodline">
       <div class="rank-name">Bloodline</div>
       <div class="rank-price">₱215</div>
+      <div class="features">
+        <ul>
+          <li>All Inferno Features</li>
+          <li>VIP Discord Role</li>
+          <li>Stackable Homes</li>
+          <li>God Kit (Monthly)</li>
+          <li>Priority Queue</li>
+          <li>Personal Ender Chest</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- Mythic -->
     <div class="rank-card">
-      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001087008819/IMG_20260406_164306_249.png" class="rank-icon" alt="Mythic Rank">
+      <img src="https://cdn.discordapp.com/attachments/1432380282430034124/1490633001087008819/IMG_20260406_164306_249.png" class="rank-icon" alt="Mythic">
       <div class="rank-name">Mythic</div>
       <div class="rank-price">₱425</div>
+      <div class="features">
+        <ul>
+          <li>All Bloodline Features</li>
+          <li>Mythic Custom Tag</li>
+          <li>Creative Mode Access (limited)</li>
+          <li>Daily Rewards Multiplier</li>
+          <li>Staff Support Priority</li>
+          <li>Exclusive Events Access</li>
+          <li>Custom Armor & Trails</li>
+        </ul>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- Your other sections (info, store, scripts) remain exactly the same -->
+<!-- Keep your original Server Info, Store, and Script sections -->
 <section class="section" id="info"> ... </section>
 <section class="section" id="store"> ... </section>
 
-<!-- Firebase & Scripts (unchanged) -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<!-- Your Firebase + Scripts go here (unchanged) -->
 
-<script>
-  // Your entire script section (particles, generateCode, copyIP, updateServerStatus, etc.) stays 100% the same
-  // ... (copy your original <script> content here)
-</script>
 </body>
 </html>
