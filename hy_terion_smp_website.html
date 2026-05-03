@@ -3,25 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HyTerion SMP</title>
+<title>Tambayan SMP</title>
+
 <style>
-body { margin:0; font-family: Arial; background:#0b0f2a; color:white; }
-header { text-align:center; padding:20px; }
-nav a { margin:0 15px; color:#00ccff; text-decoration:none; }
-.section { padding:40px; text-align:center; }
-.card { background:#11163a; padding:20px; margin:10px; border-radius:15px; display:inline-block; width:200px; transition:0.3s; box-shadow:0 0 10px #000; }
-.card:hover { transform:translateY(-10px) scale(1.05); box-shadow:0 0 20px #00ccff; }
-.rank-tag { display:block; margin-top:10px; font-weight:bold; }
-button { padding:10px; background:#00ccff; border:none; border-radius:5px; cursor:pointer; }
-input, select { padding:10px; margin:5px; width:220px; }
-.copy-btn { margin-top:10px; }
+body {
+    margin:0;
+    font-family: Arial;
+    background:#0a0a12;
+    color:white;
+}
+
+/* HEADER */
+header {
+    text-align:center;
+    padding:25px;
+}
+
+h1 {
+    background: linear-gradient(90deg,#ffd700,#ff8c00,#b000ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav a {
+    margin:0 15px;
+    color:#ffd700;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* SECTIONS */
+.section {
+    padding:50px;
+    text-align:center;
+}
+
+/* CARDS */
+.card {
+    background:#141428;
+    padding:20px;
+    margin:10px;
+    border-radius:15px;
+    display:inline-block;
+    width:220px;
+    transition:0.3s;
+    box-shadow:0 0 10px #000;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.card:hover {
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 20px #ffd700;
+}
+
+.rank-tag {
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* BUTTON */
+button {
+    padding:12px;
+    background:linear-gradient(90deg,#ffd700,#ff8c00);
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* INPUT */
+input, select {
+    padding:10px;
+    margin:5px;
+    width:240px;
+    border-radius:6px;
+    border:none;
+}
+
+.copy-btn {
+    margin-top:10px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<img src="logo.png" width="200">
-<h1>HyTerion SMP</h1>
+<img src="logo.png" width="180">
+<h1>ᴛᴀᴍʙᴀʏᴀɴ ꜱᴍᴘ</h1>
+
 <nav>
 <a href="#home">Home</a>
 <a href="#ranks">Ranks</a>
@@ -30,36 +101,53 @@ input, select { padding:10px; margin:5px; width:220px; }
 </nav>
 </header>
 
+<!-- HOME -->
 <div class="section" id="home">
-<h2>Welcome to HyTerion SMP</h2>
-<p>Player Count: <span id="playercount">Loading...</span></p>
+<h2>Welcome to Tambayan SMP</h2>
+<p>A premium Filipino Minecraft SMP experience</p>
+
+<p>👥 Player Count: <span id="playercount">Loading...</span></p>
 </div>
 
+<!-- RANKS -->
 <div class="section" id="ranks">
 <h2>Ranks</h2>
-<div class="card">💠 Crystal<br>₱75<span class="rank-tag">[CRYSTAL]</span></div>
-<div class="card">🌩️ Storm<br>₱125<span class="rank-tag">[STORM]</span></div>
-<div class="card">🔥 Inferno<br>₱165<span class="rank-tag">[INFERNO]</span></div>
-<div class="card">🩸 Bloodline<br>₱215<span class="rank-tag">[BLOODLINE]</span></div>
-<div class="card">👑 Mythic<br>₱420<span class="rank-tag">[MYTHIC]</span></div>
+
+<div class="card">🌱 Scout<br>₱50<span class="rank-tag">[SCOUT]</span></div>
+<div class="card">⚔️ Warrior<br>₱100<span class="rank-tag">[WARRIOR]</span></div>
+<div class="card">🔥 Elite<br>₱150<span class="rank-tag">[ELITE]</span></div>
+<div class="card">💎 Legend<br>₱250<span class="rank-tag">[LEGEND]</span></div>
+<div class="card">👑 Mythic<br>₱400<span class="rank-tag">[MYTHIC]</span></div>
+
 </div>
 
+<!-- INFO -->
 <div class="section" id="info">
 <h2>Server Info</h2>
-<p id="serverIP">play.hyterion.net</p>
+
+<p id="serverIP">play.tambayansmp.xyz</p>
+
 <button class="copy-btn" onclick="copyIP()">Copy IP</button>
-<p><a href="https://discord.gg/yourlink" target="_blank" style="color:#00ccff;">Join our Discord</a></p>
+
+<p>
+<a href="https://discord.gg/YOUR_LINK" target="_blank" style="color:#ffd700;">
+Join our Discord
+</a>
+</p>
+
 </div>
 
+<!-- STORE -->
 <div class="section" id="store">
 <h2>Buy Rank</h2>
+
 <input type="text" id="username" placeholder="Minecraft Username"><br>
+
 <select id="rank">
-<select id="rank">
-<option>Crystal</option>
-<option>Storm</option>
-<option>Inferno</option>
-<option>Bloodline</option>
+<option>Scout</option>
+<option>Warrior</option>
+<option>Elite</option>
+<option>Legend</option>
 <option>Mythic</option>
 </select><br>
 
@@ -67,10 +155,14 @@ input, select { padding:10px; margin:5px; width:220px; }
 <input type="file" id="proof"><br>
 
 <button onclick="generateCode()">Generate Transaction Code</button>
+
 <p id="code"></p>
+
 </div>
 
 <script>
+
+// GENERATE CODE
 function generateCode(){
 let user = document.getElementById('username').value;
 let rank = document.getElementById('rank').value;
@@ -81,26 +173,31 @@ alert("Please enter username and upload payment proof.");
 return;
 }
 
-let code = 'HT-' + Math.random().toString(36).substr(2,9).toUpperCase();
-document.getElementById('code').innerText = "Transaction Code: " + code + "\nUser: " + user + "\nRank: " + rank;
+let code = 'TB-' + Math.random().toString(36).substr(2,9).toUpperCase();
 
-// Discord webhook
+document.getElementById('code').innerText =
+"Transaction Code: " + code +
+"\nUser: " + user +
+"\nRank: " + rank;
+
+// DISCORD WEBHOOK
 fetch("YOUR_DISCORD_WEBHOOK", {
 method: "POST",
 headers: {"Content-Type": "application/json"},
 body: JSON.stringify({
-content: `New Purchase!\nUser: ${user}\nRank: ${rank}\nCode: ${code}`
+content: `🛒 New Purchase!\nUser: ${user}\nRank: ${rank}\nCode: ${code}`
 })
 });
 }
 
+// COPY IP
 function copyIP(){
 navigator.clipboard.writeText(document.getElementById('serverIP').innerText);
 alert("IP Copied!");
 }
 
-// Playercount API
-fetch('https://api.mcsrvstat.us/2/play.hyterion.net')
+// PLAYER COUNT API
+fetch('https://api.mcsrvstat.us/2/play.tambayansmp.xyz')
 .then(res => res.json())
 .then(data => {
 if(data.online){
@@ -109,6 +206,7 @@ document.getElementById('playercount').innerText = data.players.online;
 document.getElementById('playercount').innerText = "Offline";
 }
 });
+
 </script>
 
 </body>
