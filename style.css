@@ -173,3 +173,62 @@ body {
 .scroll-reveal[data-delay="100"] { transition-delay: 0.1s; } .scroll-reveal[data-delay="200"] { transition-delay: 0.2s; } .scroll-reveal[data-delay="300"] { transition-delay: 0.3s; }
 .toast { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: #fff; padding: 10px 20px; border-radius: 5px; opacity: 0; transition: 0.3s; z-index: 1000; }
 .toast.show { opacity: 1; }
+
+
+
+/* ===================== TEXT SIZE + COLOR UPGRADE ===================== */
+
+/* Make ALL store/perk text bigger */
+.perk-category p,
+.donation-msg-box p,
+.formal-text,
+.gcash-formal p,
+.gcash-formal span,
+.heavy-reminder p,
+.rank-stock {
+    font-size: 1.6rem !important;
+    line-height: 1.8;
+}
+
+/* Make headings stronger */
+.perk-category h4,
+.reminder-header {
+    font-size: 2.4rem !important;
+}
+
+/* ===================== FORCE BLACK TEXT TO YELLOW ===================== */
+/* (Fixes dark/black text visibility on dark background) */
+
+p,
+span,
+li,
+b {
+    color: #FFD700;
+}
+
+/* BUT keep important UI colors intact */
+.server-title,
+.season-subtitle,
+.rank-name {
+    color: inherit; /* prevents breaking gradients */
+}
+
+/* ===================== IMPROVE READABILITY ===================== */
+
+.purchase-container,
+.perks-list-container {
+    font-size: 1.5rem;
+}
+
+/* Add glow for better visibility */
+p, span, li {
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
+}
+
+/* ===================== BUTTON TEXT BALANCE ===================== */
+
+.purchase-btn,
+.home-btn,
+.rank-btn {
+    font-size: 2rem !important;
+}
