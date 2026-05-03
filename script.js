@@ -115,3 +115,50 @@ function showView(viewId) {
         console.error("Critical Error: View ID not found ->", viewId);
     }
 }
+
+
+document.querySelectorAll('.rank-card').forEach(card => {
+
+    // Glow follow mouse
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        card.style.setProperty('--x', `${x}%`);
+        card.style.setProperty('--y', `${y}%`);
+    });
+
+    // Particle effect
+    card.addEventListener('mouseenter', () => {
+        for (let i = 0; i < 8; i++) {
+            createParticle(card);
+        }
+    });
+
+});
+
+function createParticle(card) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+
+    const rect = card.getBoundingClientRect();
+
+    const x = Math.random() * rect.width;
+    const y = Math.random() * rect.height;
+
+    particle.style.left = x + "px";
+    particle.style.top = y + "px";
+
+    const dx = (Math.random() - 0.5) * 80 + "px";
+    const dy = (Math.random() - 0.5) * 80 + "px";
+
+    particle.style.setProperty('--dx', dx);
+    particle.style.setProperty('--dy', dy);
+
+    card.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
+}
