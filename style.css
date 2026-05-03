@@ -1,0 +1,175 @@
+/* 1. FONT SETUP */
+@font-face { 
+    font-family: 'MinecraftFont'; 
+    src: url('Blockblueprint-LV7z5.ttf') format('truetype'); 
+}
+
+/* 2. CORE RESET - FORCING FONT EVERYWHERE */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'MinecraftFont', monospace !important; 
+}
+
+body {
+    min-width: 1200px; /* Ensures the page never squishes smaller than desktop width */
+    -webkit-text-size-adjust: 100%; /* Prevents mobile browsers from automatically enlarging text */
+    background-color: #000;
+    overflow-x: auto; /* Changed from hidden to auto so users can swipe left/right if needed */
+}
+
+/* 3. GLOBAL BACKGROUND VIDEO */
+.video-background { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    object-fit: cover; 
+    z-index: -1; 
+    filter: brightness(0.5); 
+}
+
+/* 4. VIEW SYSTEM */
+.view {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 1200px; /* Set fixed width instead of 100% */
+    margin: 0 auto; /* Keeps it centered */
+}
+.view.active { display: block; opacity: 1; }
+.global-header { text-align: center; padding-top: 80px; padding-bottom: 20px; }
+
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+
+.welcome-text { font-size: 3rem; color: #d4d4d4; filter: drop-shadow(4px 4px 0px #2e1e0a); letter-spacing: 2px; }
+.server-title { font-size: 8rem; margin-top: 10px; background: linear-gradient(to bottom, #FFC700, #FF8C00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(6px 6px 0px #2e1e0a); animation: float 4s ease-in-out infinite; }
+.season-subtitle { font-size: 4rem; color: #e0e0e0; filter: drop-shadow(4px 4px 0px #2e1e0a); animation: float 4s ease-in-out infinite; animation-delay: 0.5s; }
+
+/* 5. PAGE COMPONENTS */
+.content { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 50px; }
+.status-box { display: inline-block; width: fit-content; margin: 0 auto 15px auto; padding: 8px 16px; background: rgba(0, 0, 0, 0.4); border: 2px solid #555; border-radius: 4px; color: #00FF00; font-size: 1.5rem; }
+
+/* SELECT IP DROPDOWN & ANIMATION */
+.ip-dropdown { position: relative; display: inline-block; margin-bottom: 30px; z-index: 100; }
+.ip-copy-button { 
+    font-size: 1.8rem; 
+    color: #55FF55; 
+    text-shadow: 2px 2px 0px #000; 
+    background-color: rgba(30, 80, 30, 0.7); 
+    border: 3px solid #00AA00; 
+    padding: 10px 25px; 
+    border-radius: 5px; 
+    transition: all 0.2s ease-in-out; 
+    cursor: pointer; 
+}
+
+/* RESTORED IP BUTTON HOVER ANIMATION */
+.ip-copy-button:hover { 
+    background-color: rgba(0, 0, 0, 0.9); 
+    color: #fff; 
+    border-color: #55FF55; 
+    box-shadow: 0 0 15px rgba(85, 255, 85, 0.5); 
+    transform: scale(1.05); 
+}
+
+.dropdown-content { visibility: hidden; opacity: 0; position: absolute; background: rgba(10,10,10,0.95); border: 3px solid #00AA00; min-width: 300px; margin-top: 10px; border-radius: 5px; left: 50%; transform: translateX(-50%) translateY(-10px); transition: 0.3s; }
+.dropdown-content.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+.ip-option { color: white; padding: 15px; text-decoration: none; display: block; font-size: 1.6rem; transition: 0.2s; }
+.ip-option:hover { background: #55FF55; color: #000; }
+
+/* SHARED BUTTON STYLE (GOLD/GRAY) */
+.server-nav a, .home-btn, .rank-btn { 
+    font-size: 2.5rem; 
+    text-decoration: none; 
+    color: #FFC700; 
+    text-shadow: 3px 3px 0px #3a2512; 
+    background: rgba(20, 20, 20, 0.7); 
+    border: 4px solid #555; 
+    padding: 12px 35px; 
+    border-radius: 5px; 
+    transition: 0.2s; 
+    cursor: pointer; 
+    display: inline-block;
+}
+.server-nav a:hover, .home-btn:hover, .rank-btn:hover { transform: scale(1.1); border-color: #FFC700; background: rgba(0,0,0,0.9); color: #fff; box-shadow: 0px 10px 20px rgba(255, 199, 0, 0.3); }
+
+/* SPECIFIC GREEN PURCHASE BUTTON FIX */
+.purchase-btn { 
+    font-size: 2.2rem !important; 
+    color: #FFF !important; 
+    text-shadow: 2px 2px 0px #000 !important;
+    background: rgba(30, 80, 30, 0.85) !important; 
+    border: 4px solid #00AA00 !important; 
+    padding: 15px 45px !important; 
+    border-radius: 5px !important; 
+    cursor: pointer !important;
+    margin-bottom: 50px !important; /* SEPARATION FROM BACK BUTTON */
+    transition: all 0.2s ease !important;
+    display: inline-block !important;
+    box-shadow: none !important;
+}
+.purchase-btn:hover { 
+    background: #00AA00 !important; 
+    border-color: #55FF55 !important; 
+    box-shadow: 0 0 20px rgba(85, 255, 85, 0.5) !important;
+    transform: scale(1.05) !important; 
+}
+
+/* 6. GRID LAYOUTS */
+.ranks-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1050px; margin: 40px auto 0 auto; }
+.rank-card { background: rgba(25, 25, 25, 0.9); border: 2px solid #333; border-radius: 20px; padding: 30px; width: 320px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; }
+.rank-card:hover { transform: translateY(-10px); border-color: #FFC700; }
+.rank-icon { font-size: 4rem; margin-bottom: 10px; }
+.key-thumb { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 2px solid #444; }
+.rank-name { font-size: 1.8rem; color: #fff; margin-bottom: 5px; }
+.rank-stock { font-size: 1rem; color: #55FF55; margin-bottom: 25px; font-weight: bold; }
+.rank-btn { font-size: 1.6rem !important; padding: 8px 25px !important; width: 90%; }
+
+/* 7. PERKS & PURCHASE PAGES */
+.perks-page { min-height: 100vh; padding: 50px 20px; background: rgba(0,0,0,0.6); }
+.perk-price { font-size: 4rem; color: #FFD700; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+.perk-subtitle { font-size: 2rem; color: #fff; font-style: italic; margin-bottom: 40px; }
+.perks-list-container, .donation-msg-box { max-width: 800px; margin: 0 auto 50px auto; text-align: left; }
+.perk-category h4 { font-size: 1.8rem; color: #FF8C00; margin-bottom: 10px; text-transform: uppercase; }
+.perk-category p, .donation-msg-box p, .formal-text { font-size: 1.3rem; color: #e0e0e0; margin-bottom: 10px; line-height: 1.4; }
+
+/* HEAVY REMINDER BOX */
+.heavy-reminder { background: rgba(255, 0, 0, 0.15); border: 3px dashed #ff4500; padding: 25px; border-radius: 12px; text-align: center; max-width: 800px; width: 95%; margin-bottom: 20px; }
+.reminder-header { color: #ff4500; font-size: 2.2rem; margin-bottom: 10px; text-shadow: 2px 2px 0px #000; }
+.bedrock-note { margin-top: 10px; color: #FFC700; font-weight: bold; }
+
+/* QR CODE SIZING */
+.qr-code-img { width: 300px; height: 550px; object-fit: contain; background: white; border: 8px solid #fff; border-radius: 8px; transition: 0.3s; cursor: zoom-in; }
+
+/* 8. LOGO STYLING */
+.payment-banner { width: 180px; height: 180px; object-fit: cover; border-radius: 15px; border: 3px solid #FFC700; margin: 0 auto 20px auto; display: block; }
+
+/* DISCORD LOGO FIX - ROUNDED CORNERS */
+.discord-logo-wide {
+    width: 80%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 25px; /* ROUNDED CORNERS */
+    margin: 20px auto 40px auto;
+    filter: drop-shadow(0 0 20px rgba(88, 101, 242, 0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+/* 9. RULES SIGN & FOOTER */
+.rules-container { min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 20px; }
+.rules-box { background: url('sign.png') no-repeat center center; background-size: contain; padding: 470px 150px 100px 150px; max-width: 1000px; width: 90%; color: #3e2723; font-size: 1.6rem; font-weight: bold; line-height: 1.4; min-height: 700px; }
+.rules-title { font-size: 3.5rem; margin-bottom: 30px; text-align: center; color: #2e1e0a; text-shadow: 0 0 10px #FFC700; }
+
+.footer-container { padding: 50px 20px; text-align: center; }
+.footer-container hr { height: 5px; background: #FFC700; max-width: 800px; margin: 0 auto 20px auto; border: none; }
+.season-subtitle1 { font-size: 2rem; color: #ffc800c9; filter: drop-shadow(4px 4px 0px #2e1e0a); animation: float 4s ease-in-out infinite; }
+
+/* 10. ANIMATIONS */
+.scroll-reveal { opacity: 0; transform: translateY(100px) rotateX(-10deg) scale(0.9); transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.scroll-reveal.active { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+.scroll-reveal[data-delay="100"] { transition-delay: 0.1s; } .scroll-reveal[data-delay="200"] { transition-delay: 0.2s; } .scroll-reveal[data-delay="300"] { transition-delay: 0.3s; }
+.toast { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: #fff; padding: 10px 20px; border-radius: 5px; opacity: 0; transition: 0.3s; z-index: 1000; }
+.toast.show { opacity: 1; }
