@@ -1,178 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tambayan SMP</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #0a0a0f;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* HERO */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: radial-gradient(circle at top, #1a1a2e, #0a0a0f);
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(90deg, #ffd700, #ff3d00, #b000ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    }
-
-    .hero p {
-      margin-top: 15px;
-      color: #aaa;
-    }
-
-    .btn {
-      margin-top: 25px;
-      padding: 12px 25px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, #ffd700, #ff8c00);
-      color: black;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 80px 10%;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #141421;
-      padding: 25px;
-      border-radius: 15px;
-      transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #ffd700;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0f0f18;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <title>Tambayan SMP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
 </head>
-
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div>
-      <h1>ᴛᴀᴍʙᴀʏᴀɴ ꜱᴍᴘ</h1>
-      <p>A next-gen Minecraft SMP experience</p>
-      <a href="#" class="btn">Join Now</a>
+    <video autoplay loop muted playsinline poster="fallback.jpg" class="video-background">
+        <source src="background-video.mp4" type="video/mp4">
+    </video>
+
+    <div id="toast" class="toast">IP Copied to Clipboard!</div>
+
+    <div class="view-container">
+
+        <!-- ================= 1. HOME VIEW ================= -->
+        <div id="view-home" class="view active">
+            <header class="global-header">
+                <div class="welcome-text scroll-reveal" data-delay="0">WELCOME TO</div>
+                <h1 class="server-title parallax-target scroll-reveal" data-delay="100">TAMBAYAN SMP</h1>
+                <h2 class="season-subtitle parallax-target scroll-reveal" data-delay="200">SEASON 3</h2>
+            </header>
+
+            <main class="content">
+                <div id="server-status" class="status-box scroll-reveal" data-delay="300">Loading status...</div>
+                
+                <div class="ip-dropdown scroll-reveal" data-delay="350">
+                    <button id="ip-dropdown-btn" class="ip-copy-button">Select an IP</button>
+                    <div id="ip-dropdown-list" class="dropdown-content">
+                        <a href="#" class="ip-option" data-ip="tambayansmp.sg1-mczie.fun:9019">Global (SG1)</a>
+                        <a href="#" class="ip-option" data-ip="tambayansmp.ph1-mczie.fun:9019">Local (PH1)</a>
+                        <a href="#" class="ip-option" data-ip="tambayansmp.ph2-mczie.fun:9019">Local (PH2)</a>
+                    </div>
+                </div>
+
+                <nav class="server-nav scroll-reveal" data-delay="400">
+    <a href="#" onclick="showView('view-ranks')">RANKS</a>
+    <a href="#" onclick="showView('view-keys')">KEYS</a>
+    <!-- Link these two -->
+    <a href="#" onclick="showView('view-donation')">DONATION</a>
+    <a href="#" onclick="showView('view-discord')">DISCORD</a>
+</nav>
+            </main>
+
+            <!-- Rules Sections -->
+    <section class="rules-container">
+        <div class="rules-box scroll-reveal">
+            <h2 class="rules-title"># : COMMUNITY RULES</h2>
+            <ul class="rules-list">
+                <li>➡ NO GRIEFING: Do not destroy, modify, or interfere with other players' builds without permission.</li>
+                <li>➡ NO STEALING: Respect all chests and storage. Do not take items that aren't yours.</li>
+                <li>➡ BE RESPECTFUL: No harassment, bullying, racism, or excessive trash talk in chat. Keep it friendly like a peaceful biome.</li>
+                <li>➡ NO HACKING/CHEATING: The use of X-Ray, hacked clients (Toolbox, Wurst, Meteor), exploits, or item duplication is strictly prohibited.</li>
+                <li>➡ RESPECT STAFF: Always follow instructions from developer, admins, moderators and server owners.</li>
+            </ul>
+        </div>
+    </section>
+    <section class="rules-container">
+        <div class="rules-box scroll-reveal" data-delay="200">
+            <h2 class="rules-title"># : COMMUNITY RULES</h2>
+            <ul class="rules-list">
+                <li>➡ SPAWN PROTECTION: Building is not allowed near spawn. Keep the area clean and accessible.</li>
+                <li>➡ BUILD DISTANCE: Maintain a reasonable distance from other players and spawn to avoid overcrowding.</li>
+                <li>➡ FIX ENVIRONMENTAL DAMAGE: Clean up after yourself. Repair any damage you cause to terrain or structures.</li>
+                <li>➡ NO LAG MACHINES: Any builds or contraptions that cause server lag are not allowed.</li>
+                <li>➡ NO SILVERFISH SPAWNER BUILDS: Creating or abusing Silverfish spawners/farms that may cause lag or disrupt gameplay is strictly prohibited.</li>
+            </ul>
+        </div>
+    </section>
+
+            <div class="footer-container">
+                <hr class="scroll-reveal" data-delay="0">
+                <h2 class="season-subtitle1 parallax-target scroll-reveal" data-delay="200">Nothing to see here. Go back up and read the rules thoroughly.</h2>
+            </div>
+        </div>
+
+        <!-- ================= 2. RANKS GRID VIEW ================= -->
+        <div id="view-ranks" class="view">
+            <header class="global-header"><h1 class="server-title">TAMBAYAN SMP</h1><h2 class="season-subtitle">SERVER RANKS</h2></header>
+            <main class="content">
+                <div class="ranks-grid">
+                    <div class="rank-card"><div class="rank-icon">⚔️</div><h3 class="rank-name">WARRIOR</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-perks-warrior')">VIEW PERKS</button></div>
+                    <div class="rank-card"><div class="rank-icon">🛡️</div><h3 class="rank-name">KNIGHT</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-perks-knight')">VIEW PERKS</button></div>
+                    <div class="rank-card"><div class="rank-icon">👹</div><h3 class="rank-name">MONARCH</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-perks-monarch')">VIEW PERKS</button></div>
+                    <div class="rank-card"><div class="rank-icon">👑</div><h3 class="rank-name">OMNIPOTENT</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-perks-omnipotent')">VIEW PERKS</button></div>
+                    <div class="rank-card"><div class="rank-icon">🌌</div><h3 class="rank-name">OMNISCIENT</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-perks-omniscient')">VIEW PERKS</button></div>
+                </div>
+                <button class="home-btn" style="margin-top: 60px;" onclick="showView('view-home')">BACK TO HOME</button>
+            </main>
+        </div>
+
+        <!-- ================= 3. KEYS GRID VIEW ================= -->
+        <div id="view-keys" class="view">
+            <header class="global-header"><h1 class="server-title">TAMBAYAN SMP</h1><h2 class="season-subtitle">CRATE KEYS</h2></header>
+            <main class="content">
+                <div class="ranks-grid">
+                    <div class="rank-card color-starlight"><img src="key/starlight.png" class="key-thumb"><h3>STARLIGHT</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-starlight')">PURCHASE</button></div>
+                    <div class="rank-card color-sakura"><img src="key/sakura.png" class="key-thumb"><h3>SAKURA</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-sakura')">PURCHASE</button></div>
+                    <div class="rank-card color-leviathan"><img src="key/leviathan.png" class="key-thumb"><h3>LEVIATHAN</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-leviathan')">PURCHASE</button></div>
+                    <div class="rank-card color-shogun"><img src="key/shogun.png" class="key-thumb"><h3>SHOGUN</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-shogun')">PURCHASE</button></div>
+                    <div class="rank-card color-oni"><img src="key/oni.png" class="key-thumb"><h3>ONI</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-oni')">PURCHASE</button></div>
+                    <div class="rank-card color-mecha"><img src="key/mecha.png" class="key-thumb"><h3>MECHA OVERLORD</h3><p class="rank-stock">9999 IN STOCK</p><button class="rank-btn" onclick="showView('view-pay-mecha')">PURCHASE</button></div>
+                </div>
+                <button class="home-btn" style="margin-top: 60px;" onclick="showView('view-home')">BACK TO HOME</button>
+            </main>
+        </div>
+
+        <!-- ================= 4. RANK PERK PAGES (FULL) ================= -->
+        
+        <!-- Warrior Perks -->
+        <div id="view-perks-warrior" class="view"><main class="content perks-page"><h1 class="server-title color-warrior">WARRIOR</h1><h2 class="perk-price">₱150</h2><h3 class="perk-subtitle">WARRIOR { HUMAN LEVEL }</h3><div class="perks-list-container"><div class="perk-category"><h4>➤ Armor and Weapons</h4><p>• Full set diamond armor (with enchant)</p><p>• Diamond gears (with enchant)</p><p>↳ Sword ↳ Pickaxe ↳ Axe</p></div><div class="perk-category"><h4>➤ Resources</h4><p>• Bow</p><p>• 32 Golden Apple</p><p>• 1 Totem of Undying</p></div><div class="perk-category"><h4>➤ Perks</h4><p>• /Feed (with cooldown)</p><p>• /Craft</p><p>• /Sethome (3)</p></div><div class="perk-category"><h4>➤ Cosmetic Key</h4><p>• 2x DRAW</p></div></div><button class="purchase-btn" onclick="showView('view-purchase-warrior')">PURCHASE WARRIOR</button><button class="home-btn" onclick="showView('view-ranks')">BACK</button></main></div>
+
+        <!-- Knight Perks -->
+        <div id="view-perks-knight" class="view"><main class="content perks-page"><h1 class="server-title color-knight">KNIGHT</h1><h2 class="perk-price">₱250</h2><h3 class="perk-subtitle">KNIGHT { GUARDIAN LEVEL }</h3><div class="perks-list-container"><div class="perk-category"><h4>➤ Armor and Weapons</h4><p>• Full set diamond armor (with enchant)</p><p>• Diamond gears (with enchant)</p><p>↳ Sword ↳ Pickaxe ↳ Axe</p></div><div class="perk-category"><h4>➤ Resources</h4><p>• 32 Exp Bottles</p><p>• 32 Golden Apple</p><p>• 32 Enchanted Golden Apple</p><p>• Shulker Box</p><p>• 5 Trial keys</p><p>• 5 Totem of Undying</p></div><div class="perk-category"><h4>➤ Perks</h4><p>• /Feed (with cooldown)</p><p>• /Nickname</p><p>• /Craft</p><p>• /Sethome (4)</p></div><div class="perk-category"><h4>➤ Cosmetic Key</h4><p>• 2x DRAW</p></div></div><button class="purchase-btn" onclick="showView('view-purchase-knight')">PURCHASE KNIGHT</button><button class="home-btn" onclick="showView('view-ranks')">BACK</button></main></div>
+
+        <!-- Monarch Perks -->
+        <div id="view-perks-monarch" class="view"><main class="content perks-page"><h1 class="server-title color-monarch">MONARCH</h1><h2 class="perk-price">₱350</h2><h3 class="perk-subtitle">MONARCH { DEMI GOD LEVEL }</h3><div class="perks-list-container"><div class="perk-category"><h4>➤ Armor and Weapons</h4><p>• Full set diamond armor (with enchant)</p><p>• Elytra (with enchant)</p><p>• Diamond gears (with enchant)</p></div><div class="perk-category"><h4>➤ Resources</h4><p>• 2 Stack Exp Bottles</p><p>• 32 Golden Apple</p><p>• 15 Enchanted Golden Apple</p><p>• 2 Shulker Box</p><p>• 15 Trial keys</p><p>• 10 Totem of Undying</p><p>• 3 stack Fireworks</p></div><div class="perk-category"><h4>➤ Perks</h4><p>• /efly (with cooldown)</p><p>• /eHeal</p><p>• /Feed</p><p>• /echest</p><p>• /Craft</p><p>• /Nickname</p><p>• /Sethome (5)</p></div><div class="perk-category"><h4>➤ Cosmetic Key</h4><p>• 4x DRAW</p></div></div><button class="purchase-btn" onclick="showView('view-purchase-monarch')">PURCHASE MONARCH</button><button class="home-btn" onclick="showView('view-ranks')">BACK</button></main></div>
+
+        <!-- Omnipotent Perks -->
+        <div id="view-perks-omnipotent" class="view"><main class="content perks-page"><h1 class="server-title color-omnipotent">OMNIPOTENT</h1><h2 class="perk-price">₱550</h2><h3 class="perk-subtitle">OMNIPOTENT { GOD LEVEL }</h3><div class="perks-list-container"><div class="perk-category"><h4>➤ Armor and Weapons</h4><p>• Full set Netherite Armor (with enchant)</p><p>• Netherite weapons (with enchant) ↳ Sword ↳ Pickaxe ↳ Axe ↳ Mace</p><p>• Elytra</p></div><div class="perk-category"><h4>➤ Resources</h4><p>• 1x 64 God Apples | 1x 64 Golden Apples</p><p>• 3x 64 XP Bottles | 3x Shulker Boxes</p><p>• 1x Elytra (Fully Enchanted) | 3x 64 Fireworks</p><p>• 16x Ominous Trial Keys | 16x Trial Keys | 15x Totems</p></div><div class="perk-category"><h4>➤ Perks</h4><p>• /efly | /eHeal | /Feed | /Condense | /Nickname | /Skull</p><p>• /Clear | /Craft | /Sethome (10) | /Repair | /Near | /echest</p></div><div class="perk-category"><h4>➤ Cosmetic Key</h4><p>• 6x DRAW</p></div></div><button class="purchase-btn" onclick="showView('view-purchase-omnipotent')">PURCHASE OMNIPOTENT</button><button class="home-btn" onclick="showView('view-ranks')">BACK</button></main></div>
+
+        <!-- Omniscient Perks -->
+        <div id="view-perks-omniscient" class="view"><main class="content perks-page"><h1 class="server-title color-omniscient">OMNISCIENT</h1><h2 class="perk-price">₱750</h2><h3 class="perk-subtitle">OMNISCIENT { OMNIVERSE LEVEL }</h3><div class="perks-list-container"><div class="perk-category"><h4>➤ Armor and Weapons</h4><p>• Full set Netherite Armor/Gears (Max Enchant)</p><p>• 2x Elytra | Mace</p></div><div class="perk-category"><h4>➤ Resources</h4><p>• 5x 64 God Apples | 5x 64 Golden Apples</p><p>• 10x 64 XP Bottles | 5x Shulker Boxes</p><p>• 2x Elytra (Fully Enchanted) | 8x 64 Fireworks</p><p>• 32x Ominous/Trial Keys | 20x Totems | 2x Beacon | 32x Ingots</p></div><div class="perk-category"><h4>➤ Perks</h4><p><i>(all command is no cooldown reduction)</i></p><p>• /efly (infinite) | /eHeal | /Feed | /Condense | /Nickname</p><p>• /Skull | /Clear | /Craft | /Sethome (15) | /Repair | /Near | /echest</p></div><div class="perk-category"><h4>➤ Cosmetic Key</h4><p>• 7x DRAW</p></div></div><button class="purchase-btn" onclick="showView('view-purchase-omniscient')">PURCHASE OMNISCIENT</button><button class="home-btn" onclick="showView('view-ranks')">BACK</button></main></div>
+
+
+        <!-- ================= 5. RANK PURCHASE VIEWS ================= -->
+        <!-- Warrior Payment -->
+        <div id="view-purchase-warrior" class="view"><main class="content perks-page"><h1 class="server-title color-warrior">WARRIOR</h1><div class="purchase-container"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT YOUR PAYMENT AS PROOF. POST IT IN DISCORD <b>TAMBAYAN STORE</b> CHANNEL WITH YOUR USERNAME.</p><p class="bedrock-note">(BEDROCK/MCPE: PUT <b>*</b> BEFORE NAME)</p></div><div class="qr-grid"><div class="qr-item"><p class="qr-desc">➡ 150₱ — WITH COSMETICS</p><img src="qr/qr-warrior-1.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div><div class="qr-item"><p class="qr-desc">➡ 85₱ — RANK ONLY</p><img src="qr/qr-warrior-2.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><div class="gcash-formal"><p class="formal-text">IF NO SCANNER: SEND VIA GCASH</p><span class="gcash-number">0928 420 5708</span></div></div><button class="home-btn" onclick="showView('view-perks-warrior')">BACK</button></main></div>
+        <!-- (Apply same logic for Knight, Monarch, Omnipotent, Omniscient) -->
+
+        <!-- ================= 6. KEY PAYMENT VIEWS (ALL 6) ================= -->
+        
+        <!-- STARLIGHT -->
+        <div id="view-pay-starlight" class="view"><main class="content perks-page"><h1 class="server-title color-starlight">STARLIGHT</h1><img src="key/starlight.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">IF NO SCANNER: SEND VIA GCASH</p><p>0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱160.00 — STARLIGHT PACK</p><img src="qr/qr-key-starlight.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- SAKURA -->
+        <div id="view-pay-sakura" class="view"><main class="content perks-page"><h1 class="server-title color-sakura">SAKURA</h1><img src="key/sakura.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">GCASH: 0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱120.00 — SAKURA PACK</p><img src="qr/qr-key-sakura.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- LEVIATHAN -->
+        <div id="view-pay-leviathan" class="view"><main class="content perks-page"><h1 class="server-title color-leviathan">LEVIATHAN</h1><img src="key/leviathan.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">GCASH: 0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱140.00 — LEVIATHAN PACK</p><img src="qr/qr-key-leviathan.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- SHOGUN -->
+        <div id="view-pay-shogun" class="view"><main class="content perks-page"><h1 class="server-title color-shogun">SHOGUN</h1><img src="key/shogun.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">GCASH: 0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱100.00 — SHOGUN PACK</p><img src="qr/qr-key-shogun.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- ONI -->
+        <div id="view-pay-oni" class="view"><main class="content perks-page"><h1 class="server-title color-oni">ONI</h1><img src="key/oni.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">GCASH: 0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱160.00 — ONI PACK</p><img src="qr/qr-key-oni.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- MECHA -->
+        <div id="view-pay-mecha" class="view"><main class="content perks-page"><h1 class="server-title color-mecha">MECHA OVERLORD</h1><img src="key/mecha.png" class="payment-banner"><div class="purchase-container keys-pay-layout"><div class="heavy-reminder"><h2 class="reminder-header">HEAVY REMINDER!</h2><p>ALWAYS SCREENSHOT PAYMENT. POST IN <b>TAMBAYAN STORE</b> DISCORD WITH USERNAME.</p><p class="bedrock-note">(IF BEDROCK: PUT <b>*</b> BEFORE NAME)</p><br><p style="color:#FFC700">GCASH: 0928 420 5708</p></div><div class="qr-pay-box"><p class="qr-desc">➡ ₱250.00 — MECHA PACK</p><img src="qr/qr-key-mecha.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)"></div></div><button class="home-btn" onclick="showView('view-keys')">BACK</button></main></div>
+
+        <!-- ================= DONATION VIEW ================= -->
+<div id="view-donation" class="view">
+    <main class="content perks-page">
+        <h1 class="server-title rank-title-glow color-omnipotent">DONATIONS</h1>
+        
+        <div class="donation-msg-box" align="center">
+            <p>Tambayan SMP is a project built for the community. Running a high-performance server 24/7 requires significant resources.</p>
+            <p>Your support helps us maintain the hardware, protect against attacks, and continue developing new custom features for everyone to enjoy. <b>Thank you for keeping our world alive!</b></p>
+        </div>
+
+        <div class="qr-item">
+            <p class="qr-desc">➡ SCAN TO DONATE ANY AMOUNT</p>
+            <!-- Make sure to have this image in your qr folder -->
+            <img src="qr/donation-qr.png" class="qr-code-img clickable-qr" onclick="window.open(this.src)">
+        </div>
+
+        <div class="gcash-formal">
+            <span class="gcash-label">DIRECT GCASH:</span>
+            <span class="gcash-number">0928 420 5708</span>
+        </div>
+
+        <!-- BACK TO HOME BUTTON -->
+        <button class="home-btn" style="margin-top: 40px;" onclick="showView('view-home')">BACK TO HOME</button>
+    </main>
+</div>
+
+<!-- ================= DISCORD VIEW ================= -->
+<div id="view-discord" class="view">
+    <main class="content perks-page">
+        <!-- Discord Logo at the top -->
+        <img src="key/discord-logo.png" class="discord-logo-wide">
+        
+        <h1 class="server-title color-starlight">JOIN OUR DISCORD</h1>
+
+        <div class="donation-msg-box" align="center">
+            <p>Connect with the community! Get real-time server updates, report issues, chat with staff, and participate in exclusive giveaways.</p>
+        </div>
+
+        <!-- The actual invite link button -->
+        <a href="https://discord.gg/vat3Pj9HPS" target="_blank" class="purchase-btn" style="text-decoration: none; display: inline-block;">DISCORD</a>
+        
+        <!-- BACK TO HOME BUTTON -->
+        <button class="home-btn" style="margin-top: 50px;" onclick="showView('view-home')">Back to Home</button>
+    </main>
+</div>
+
     </div>
-  </div>
 
-  <!-- FEATURES -->
-  <section>
-    <h2 class="section-title">✨ Features</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>⚔️ Dungeons</h3>
-        <p>Party-based wave system with bosses and rewards.</p>
-      </div>
-
-      <div class="card">
-        <h3>🎁 Crates</h3>
-        <p>Unlock exclusive cosmetics with rarity tiers.</p>
-      </div>
-
-      <div class="card">
-        <h3>🏡 Claims</h3>
-        <p>Protect your land with scalable claim system.</p>
-      </div>
-
-      <div class="card">
-        <h3>👥 Party System</h3>
-        <p>Team up with friends for dungeon runs.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- STORE -->
-  <section>
-    <h2 class="section-title">🛒 Store</h2>
-    <div class="grid">
-
-      <div class="card">
-        <h3>🔑 Crate Keys</h3>
-        <p>Get access to exclusive cosmetics.</p>
-      </div>
-
-      <div class="card">
-        <h3>💎 Ranks</h3>
-        <p>Unlock perks and bonuses.</p>
-      </div>
-
-      <div class="card">
-        <h3>✨ Cosmetics</h3>
-        <p>Stand out with unique effects.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Tambayan SMP — All Rights Reserved
+    <script src="script.js"></script>
+</body>
+</html>
   </footer>
 
 </body>
